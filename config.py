@@ -180,9 +180,9 @@ i = 0
 with open("config.txt", "w", encoding="utf-8") as file:
     for code in processed_codes:
         if i == 0:
-            config_string = "#🌐 Updated on " + final_string + ":00 | update every 12 hours"
+            config_string = "#🌐 Updated on " + final_string + ":00 | update every 1 hour"
         else:
-            config_string = "#🌐Tahanian-SERVER " + str(i) + " | " + str(final_string) + ":00"
+            config_string = "#🌐TahanianSRV -  " + str(i) + " | " + str(final_string) + ":00"
         config_final = code + config_string
         file.write(config_final + "\n")
         i += 1
