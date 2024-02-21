@@ -1,0 +1,1 @@
+curl -v -F txt=@config.txt https://uploadserver.sialkcable.ir/v2ray
