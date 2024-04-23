@@ -160,9 +160,11 @@ new_date_time = current_date_time + timedelta(hours=4)
 # Get the updated hour as a string
 updated_hour = new_date_time.strftime("%H")
 
+updated_minute = new_date_time.strftime("%M")
+
 # Combine the strings to form the final result
-final_string = f"{current_month}-{current_day}-{updated_hour}"
-config_string = "#✅ " + str(final_string) + ":00-"
+final_string = f"{current_month}-{current_day}-{updated_hour}-{updated_minute}"
+config_string = "#✅ " + str(final_string) + "-"
 
 for code in codes:
     vmess_parts = code.split("vmess://")
@@ -180,9 +182,9 @@ i = 0
 with open("config.txt", "w", encoding="utf-8") as file:
     for code in processed_codes:
         if i == 0:
-            config_string = "#🌐 Updated on " + final_string + ":00 | update every 1 hour"
+            config_string = "#🌐 Updated on " + final_string + " | update every 1 hour"
         else:
-            config_string = "#🌐TahanianSRV -  " + str(i) + " | " + str(final_string) + ":00"
+            config_string = "#🌐TahanianSRV -  " + str(i) + " | " + str(final_string)
         config_final = code + config_string
         file.write(config_final + "\n")
         i += 1
