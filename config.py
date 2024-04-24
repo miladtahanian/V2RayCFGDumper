@@ -154,9 +154,8 @@ current_month = current_date_time.strftime("%b")
 # Get the current day as a string
 current_day = current_date_time.strftime("%d")
 
-# Increase the current hour by 3:30 hours
-new_date_time = current_date_time + timedelta(hours=3)
-new_date_time = current_date_time + timedelta(minutes=30)
+# Increase the current hour by 4 hours
+new_date_time = current_date_time + timedelta(hours=4)
 
 # Get the updated hour as a string
 updated_hour = new_date_time.strftime("%H")
