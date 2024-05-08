@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
+import pytz
+
 
 webpage_addresses = [
     "https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3Dinternet_groups",
@@ -45,8 +47,7 @@ codes = list(set(codes))  # Remove duplicates
 processed_codes = []
 
 # Get the current date and time
-current_date_time = datetime.now()
-
+current_date_time = datetime.now(pytz.timezone('Asia/Tehran'))
 # Print the current month in letters
 current_month = current_date_time.strftime("%b")
 
@@ -54,12 +55,12 @@ current_month = current_date_time.strftime("%b")
 current_day = current_date_time.strftime("%d")
 
 # Increase the current hour by 4 hours
-new_date_time = current_date_time + timedelta(hours=4)
+#new_date_time = current_date_time + timedelta(hours=4)
 
 # Get the updated hour as a string
-updated_hour = new_date_time.strftime("%H")
+updated_hour = current_date_time.strftime("%H")
 
-updated_minute = new_date_time.strftime("%M")
+updated_minute = current_date_time.strftime("%M")
 
 # Combine the strings to form the final result
 final_string = f"{current_month}--{current_day}--{updated_hour}:{updated_minute}"
