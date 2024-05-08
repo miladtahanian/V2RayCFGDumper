@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone
 import pytz
+import jdatetime
+
 
 
 webpage_addresses = [
@@ -47,7 +49,7 @@ codes = list(set(codes))  # Remove duplicates
 processed_codes = []
 
 # Get the current date and time
-current_date_time = datetime.now(pytz.timezone('Asia/Tehran'))
+current_date_time = jdatetime.now(pytz.timezone('Asia/Tehran'))
 # Print the current month in letters
 current_month = current_date_time.strftime("%b")
 
