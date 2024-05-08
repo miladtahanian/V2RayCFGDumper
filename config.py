@@ -49,7 +49,7 @@ codes = list(set(codes))  # Remove duplicates
 processed_codes = []
 
 # Get the current date and time
-current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
+current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'),locale='fa_IR')
 # Print the current month in letters
 current_month = current_date_time.strftime("%b")
 
@@ -65,7 +65,7 @@ updated_hour = current_date_time.strftime("%H")
 updated_minute = current_date_time.strftime("%M")
 
 # Combine the strings to form the final result
-final_string = f"{current_month}--{current_day}--{updated_hour}:{updated_minute}"
+final_string = f"{current_day} - {current_month} | {updated_hour}:{updated_minute}"
 config_string = "#✅ " + str(final_string) + "-"
 
 for code in codes:
