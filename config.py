@@ -4,14 +4,14 @@ from datetime import datetime, timedelta
 
 webpage_addresses = [
     "https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3Dinternet_groups",
-    "https://t.me/VPN_Xpace",
-    "https://t.me/kingspeedchanel",
-    "https://t.me/FreakConfig",
-    "https://t.me/v2rayngvpn",
-    "https://t.me/V2RAYROZ",
-    "https://t.me/V2ray_Alpha",
-    "https://t.me/v2_Hub",
-    "https://t.me/Powerful1VPN"
+    "https://t.me/s/VPN_Xpace",
+    "https://t.me/s/kingspeedchanel",
+    "https://t.me/s/FreakConfig",
+    "https://t.me/s/v2rayngvpn",
+    "https://t.me/s/V2RAYROZ",
+    "https://t.me/s/V2ray_Alpha",
+    "https://t.me/s/v2_Hub",
+    "https://t.me/s/Powerful1VPN"
 ]
 
 
@@ -81,9 +81,9 @@ i = 0
 with open("config.txt", "w", encoding="utf-8") as file:
     for code in processed_codes:
         if i == 0:
-            config_string = "#🌐 به روزرسانی شده در " + final_string + " "
+            config_string = "#🌐 به روزرسانی شده " + final_string + " | "
         else:
-            config_string = "#🌐سرور |  " + str(i) + " | " + str(final_string)
+            config_string = "#🌐سرور |  " + str(i) + " | " + str(final_string) + "| TAHANIANSERVERS"
         config_final = code + config_string
         file.write(config_final + "\n")
         i += 1
