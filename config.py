@@ -78,7 +78,7 @@ for code in codes:
             processed_part = part.split("#")[0]
             processed_codes.append(processed_part)
 
-#processed_codes = remove_duplicates(processed_codes)
+processed_codes = remove_duplicates(processed_codes)
 
 i = 0
 with open("config.txt", "w", encoding="utf-8") as file:
