@@ -49,7 +49,7 @@ codes = list(set(codes))  # Remove duplicates
 processed_codes = []
 
 # Get the current date and time
-current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'),locale='fa_IR')
+current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
 # Print the current month in letters
 current_month = current_date_time.strftime("%b")
 
