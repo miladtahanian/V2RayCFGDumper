@@ -1,10 +1,9 @@
 import requests
+import locale
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone
 import pytz
 import jdatetime
-
-
 
 webpage_addresses = [
     "https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3Dinternet_groups",
@@ -127,7 +126,6 @@ webpage_addresses = [
     "https://t.me/s/Configforvpn01"
 ]
 
-
 def remove_duplicates(input_list):
     unique_list = []
     for item in input_list:
@@ -159,6 +157,7 @@ processed_codes = []
 
 # Get the current date and time
 current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
+locale.setlocale(locale.LC_ALL, jdatetime.FA_LOCALE)
 # Print the current month in letters
 current_month = current_date_time.strftime("%b")
 
@@ -174,7 +173,8 @@ updated_hour = current_date_time.strftime("%H")
 updated_minute = current_date_time.strftime("%M")
 
 # Combine the strings to form the final result
-final_string = f"{current_month}--{current_day} | {updated_hour}:{updated_minute}"
+final_string = f"{current_day} {current_month} | {updated_hour}:{updated_minute}"
+final_others_string = f"{current_day} {current_month}"
 config_string = "#✅ " + str(final_string) + "-"
 
 for code in codes:
@@ -189,13 +189,25 @@ for code in codes:
 
 processed_codes = remove_duplicates(processed_codes)
 
+new_processed_codes = []
+
+for code in processed_codes:
+    vmess_parts = code.split("vmess://")
+    vless_parts = code.split("vless://")
+
+    for part in vmess_parts + vless_parts:
+        if "ss://" in part or "vmess://" in part or "vless://" in part or "trojan://" in part:
+            service_name = part.split("serviceName=")[-1].split("&")[0]
+            processed_part = part.split("#")[0]
+            new_processed_codes.append(processed_part)
+
 i = 0
 with open("config.txt", "w", encoding="utf-8") as file:
-    for code in processed_codes:
+    for code in new_processed_codes:
         if i == 0:
             config_string = "#🌐 به روزرسانی شده در" + final_string + " | هر 10 دقیقه کانفیگ جدید داریم"
         else:
-            config_string = "#🌐سرور |  " + str(i) + " | " + str(final_string) + "| TAHANIANSERVERS"
+            config_string = "#🌐سرور " + str(i) + " | " + str(final_others_string) + "| TAHANIANSERVERS"
         config_final = code + config_string
         file.write(config_final + "\n")
         i += 1
