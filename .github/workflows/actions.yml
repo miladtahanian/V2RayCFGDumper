@@ -14,12 +14,11 @@ jobs:
       contents: write
 
     steps:
-
-      - name: set locale
+      - name: SetLocale
       - run: |
-        export LC_ALL="en_US.UTF-8"
-        export LC_CTYPE="en_US.UTF-8"
-        sudo dpkg-reconfigure locales
+          export LC_ALL="en_US.UTF-8"
+          export LC_CTYPE="en_US.UTF-8"
+          sudo dpkg-reconfigure locales
 
       - name: checkout repo content
         uses: actions/checkout@v2
@@ -33,7 +32,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+
       - name: execute py script
         run: |
           python config.py
