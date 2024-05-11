@@ -205,7 +205,7 @@ with open("config.txt", "w", encoding="utf-8") as file:
         if i == 0:
             config_string = "#🌐 به روزرسانی شده در" + final_string + " | هر 15 دقیقه کانفیگ جدید داریم"
         else:
-            config_string = "#🌐سرور " + str(i) + " | " + str(final_others_string) + "| TAHANIANSERVERS"
+            config_string = "#🌐سرور " + str(i) + " | " + str(final_others_string) + "| MTSRVRS"
         config_final = code + config_string
         file.write(config_final + "\n")
         i += 1
