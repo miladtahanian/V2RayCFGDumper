@@ -1,5 +1,4 @@
 import requests
-import locale
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone
 import pytz
@@ -157,7 +156,6 @@ processed_codes = []
 
 # Get the current date and time
 current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
-locale.setlocale(locale.LC_ALL, jdatetime.FA_LOCALE)
 # Print the current month in letters
 current_month = current_date_time.strftime("%b")
 
@@ -173,8 +171,8 @@ updated_hour = current_date_time.strftime("%H")
 updated_minute = current_date_time.strftime("%M")
 
 # Combine the strings to form the final result
-final_string = f"{current_day} {current_month} | {updated_hour}:{updated_minute}"
-final_others_string = f"{current_day} {current_month}"
+final_string = f"{current_day}-{current_month} | {updated_hour}:{updated_minute}"
+final_others_string = f"{current_day}-{current_month}"
 config_string = "#✅ " + str(final_string) + "-"
 
 for code in codes:
