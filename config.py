@@ -172,7 +172,7 @@ updated_minute = current_date_time.strftime("%M")
 
 # Combine the strings to form the final result
 final_string = f"{current_month}-{current_day} | {updated_hour}:{updated_minute}"
-final_others_string = f"{current_day}-{current_month}"
+final_others_string = f"{current_month}-{current_day}"
 config_string = "#✅ " + str(final_string) + "-"
 
 for code in codes:
