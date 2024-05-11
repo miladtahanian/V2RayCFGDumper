@@ -14,11 +14,6 @@ jobs:
       contents: write
 
     steps:
-      - run: |
-          export LC_ALL="fa_IR"
-          export LC_CTYPE="fa_IR"
-          sudo dpkg-reconfigure locales
-
       - name: checkout repo content
         uses: actions/checkout@v2
 
