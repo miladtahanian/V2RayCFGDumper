@@ -31,16 +31,7 @@ final_string = f"{current_month}-{current_day} | {updated_hour}:{updated_minute}
 
 config_string = "#🌐 به روزرسانی شده در" + final_string + "TAHANIANSRVRS"
 # Replace the text
-old_text = "AzadNet.t.me"
-new_text = config_string
-for key, value in data.items():
-    if isinstance(value, str):
-        data[key] = value.replace(old_text, new_text)
-
+data = str(data).replace('AzadNet.t.me',config_string)
 # Save the modified data back to a file
 with open('config.yaml', 'w', encoding='utf-8') as file:
     yaml.dump(data, file)
-    
-data_str = json.dumps(data_dict, indent=2, sort_keys=True)
-with open('modified_file.txt', 'w', encoding='utf-8') as file:
-    file.write(data_str)

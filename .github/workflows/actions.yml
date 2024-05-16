@@ -31,6 +31,14 @@ jobs:
         run: |
           python config.py
 
+        - name: install python packages
+        run: |
+          pip install -r newrequirements.txt
+
+      - name: execute py script
+        run: |
+          python new.py
+
       - name: setup git config
         run: |
           git config user.name "GitHub Actions Bot"
