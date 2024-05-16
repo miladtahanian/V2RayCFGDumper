@@ -31,7 +31,7 @@ final_string = f"{current_month}-{current_day} | {updated_hour}:{updated_minute}
 
 config_string = "#🌐 به روزرسانی شده در" + final_string + "TAHANIANSRVRS"
 # Replace the text
-data = str(data).replace('(AzadNet.t.me)',"")
+# data = str(data).replace('(AzadNet.t.me)',"")
 # Save the modified data back to a file
 with open('config.yaml', 'w', encoding='utf-8') as file:
     yaml.dump(data, file)
