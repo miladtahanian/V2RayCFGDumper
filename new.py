@@ -1,37 +1,19 @@
-import requests
-import ruamel
-from datetime import datetime, timezone
-import jdatetime
-from ruamel.yaml import YAML
-import pytz
+import yaml
+import json
 
-# Retrieve the YAML file from the URL
-url = 'https://raw.githubusercontent.com/AzadNetCH/Clash/main/AzadNet_META_IRAN-Direct.yml'  # Replace with the actual URL
-response = requests.get(url)
-yaml = YAML(typ='rt')  # Using round-trip mode for loading
-data = yaml.load(response.text)
+# Path to your YAML file
+yaml_file = "AzadNet_META_IRAN-Direct.yml"
 
-# Get the current date and time
-current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
-# Print the current month in letters
-current_month = current_date_time.strftime("%b")
+# Open the YAML file in read mode
+with open(yaml_file, 'r', encoding="utf-8") as file:
+  # Load the YAML data into a Python object
+  data = yaml.safe_load(file)
 
-# Get the current day as a string
-current_day = current_date_time.strftime("%d")
+# Open a new file for writing JSON data (optional)
+with open("config.json", 'w') as json_file:
+  # Dump the Python object to a JSON file with indentation (optional)
+  json.dump(data, json_file, indent=2)
 
-# Increase the current hour by 4 hours
-#new_date_time = current_date_time + timedelta(hours=4)
-
-# Get the updated hour as a string
-updated_hour = current_date_time.strftime("%H")
-
-updated_minute = current_date_time.strftime("%M")
-
-final_string = f"{current_month}-{current_day} | {updated_hour}:{updated_minute}"
-
-config_string = "#🌐 به روزرسانی شده در" + final_string + "TAHANIANSRVRS"
-# Replace the text
-data = str(data).replace('(AzadNet.t.me)',"")
-# Save the modified data back to a file
-with open('config.yml', 'w', encoding='utf-8') as file:
-    yaml.dump(data, file)
+# Alternatively, convert to a JSON string
+json_string = json.dumps(data)
+# You can now use the json_string variable for further processing
