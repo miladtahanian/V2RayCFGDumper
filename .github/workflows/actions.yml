@@ -36,8 +36,8 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
-      - name: run CURL
-        run: |
-          curl -v -F txt=@config.txt https://uploadserver.sialkcable.ir/v2ray
+      # - name: run CURL
+      #   run: |
+      #     curl -v -F txt=@config.txt https://uploadserver.sialkcable.ir/v2ray
 
       - uses: stefanzweifel/git-auto-commit-action@v5
