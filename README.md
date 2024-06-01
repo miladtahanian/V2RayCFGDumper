@@ -6,7 +6,7 @@
 <!-- USAGE -->
 ## Usage
 
-Add This [Link](http://uploadserver.sialkcable.ir/v2ray/config.txt) in V2RayNG, Nekoray for Android or PC as a subscription link and update every 6 hours
+Add This [Link](http://uploadserver.sialkcable.ir/v2ray/config.txt) in V2RayNG, Nekoray for Android or PC as a subscription link and update every hour!
 
 <!-- CONTACT -->
 ## Contact
@@ -16,4 +16,4 @@ Milad Tahanian - [@imiladtahanian](https://twitter.com/imiladtahanian) - miladta
 Project Link: [https://github.com/miladtahanian/V2RayCFGDumper/](https://github.com/miladtahanian/V2RayCFGDumper/)
 
 [product-screenshot]: images/screenshot.jpg
-[config-link] : http://uploadserver.sialkcable.ir/v2ray/config.txt
+Config Link : http://uploadserver.sialkcable.ir/v2ray/config.txt
