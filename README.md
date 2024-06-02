@@ -11,7 +11,7 @@ Add This [Link](http://uploadserver.sialkcable.ir/v2ray/config.txt) in V2RayNG, 
 <!-- CONTACT -->
 ## Contact
 
-Milad Tahanian - [@imiladtahanian](https://twitter.com/imiladtahanian) - miladtahanianofficial@gmail.com
+Milad Tahanian - [Telegram](https://t.me/miladtahanian) | [Instagram](https://instagram.com/tahanianmilad) - [MailMe](mailto:miladtahanianofficial@gmail.com)
 
 Project Link: [https://github.com/miladtahanian/V2RayCFGDumper/](https://github.com/miladtahanian/V2RayCFGDumper/)
 
