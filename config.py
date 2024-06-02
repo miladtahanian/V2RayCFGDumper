@@ -113,6 +113,3 @@ with open("config.txt", "w", encoding="utf-8") as file:
         config_final = code + config_string
         file.write(config_final + "\n")
         i += 1
-
-with open("norename.txt", "w", encoding="utf-8") as file:
-    file.write(new_processed_codes + "\n")
