@@ -15,5 +15,5 @@ Milad Tahanian - [@imiladtahanian](https://twitter.com/imiladtahanian) - miladta
 
 Project Link: [https://github.com/miladtahanian/V2RayCFGDumper/](https://github.com/miladtahanian/V2RayCFGDumper/)
 
-[product-screenshot]: images/screenshot.jpg
+[product-screenshot]: images/shot.jpg
 Config Link : http://uploadserver.sialkcable.ir/v2ray/config.txt
