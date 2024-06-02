@@ -6,7 +6,7 @@
 <!-- USAGE -->
 ## Usage
 
-Add This [Link](http://uploadserver.sialkcable.ir/v2ray/config.txt) in V2RayNG, Nekoray for Android or PC as a subscription link and update every hour!
+Add This [Link](http://uploadserver.sialkcable.ir/v2ray/config.txt) in V2RayNG, Nekoray for Android or PC as a subscription link and update every 6 hour!
 
 <!-- CONTACT -->
 ## Contact
