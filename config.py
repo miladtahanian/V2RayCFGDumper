@@ -5,6 +5,9 @@ import pytz
 import jdatetime
 
 webpage_addresses = [
+    "https://t.me/s/XpnTeam",
+    "https://t.me/s/ZibaNabz",
+    "https://t.me/s/FreakConfig",
     "https://t.me/s/V_2rey",
     "https://t.me/s/V2ray_Alpha",
     "https://t.me/s/PROXY_MTM",
