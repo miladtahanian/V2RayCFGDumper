@@ -14,7 +14,7 @@ webpage_addresses = [
     "https://t.me/s/SiNABiGO",
     "https://t.me/s/v2rayng12023",
     "https://t.me/s/vlessconfig",
-    "https://t.me/s/s/piazshekan",
+    "https://t.me/s/piazshekan",
     "https://t.me/s/Free_Internet_Iran",
     "https://t.me/s/ARv2ray",
     "https://t.me/s/VPNCUSTOMIZE",
