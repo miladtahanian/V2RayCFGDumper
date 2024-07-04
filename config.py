@@ -1,4 +1,4 @@
-import requests
+e import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone
 import pytz
@@ -6,6 +6,7 @@ import jdatetime
 
 webpage_addresses = [
     "https://t.me/s/XpnTeam",
+    "https://t.me/v2rayNGcloud",
     "https://t.me/s/ZibaNabz",
     "https://t.me/s/FreakConfig",
     "https://t.me/s/V_2rey",
