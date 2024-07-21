@@ -5,6 +5,7 @@ import pytz
 import jdatetime
 
 webpage_addresses = [
+    "https://t.me/s/v2ray_configs_pool",
     "https://t.me/s/XpnTeam",
     "https://t.me/v2rayNGcloud",
     "https://t.me/s/ZibaNabz",
