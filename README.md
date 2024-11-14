@@ -9,7 +9,7 @@
 Add This [Link](https://raw.githubusercontent.com/miladtahanian/V2RayCFGDumper/main/config.txt) in V2RayNG, Nekoray on Android or V2rayN or NekoBox on PC as a subscription link and update every 15 minute!
 
 or Scan QRCode Below:
-[product-screenshot]: images/download.png
+[product-qrcode]: images/download.png
 <!-- CONTACT -->
 ## Contact
 
