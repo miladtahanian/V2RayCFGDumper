@@ -1,1 +1,0 @@
-curl -v -F txt=@config.txt https://uploadserver.liara.run/v2ray
