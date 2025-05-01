@@ -266,13 +266,13 @@ webpage_addresses = [
 
 new_webaddresses = [
     "https://t.me/s/BinexTiFy",
-    "VPN_ROOM",
-    "VPNTV20",
-    "MTMVPN",
-    "MARAMBASHI"
+    "https://t.me/s/VPN_ROOM",
+    "https://t.me/s/VPNTV20",
+    "https://t.me/s/MTMVPN",
+    "https://t.me/s/MARAMBASHI"
 	"https://t.me/s/zedmodeonVPN"
-    "LIGHTNING6"
-	"EXPRESSVPN_420",
+    "https://t.me/s/LIGHTNING6"
+	"https://t.me/s/EXPRESSVPN_420",
     
 ]
 
