@@ -264,6 +264,18 @@ webpage_addresses = [
     "https://t.me/s/zohalserver"
 ]
 
+new_webaddresses = [
+    "https://t.me/s/BinexTiFy",
+    "VPN_ROOM",
+    "VPNTV20",
+    "MTMVPN",
+    "MARAMBASHI"
+	"https://t.me/s/zedmodeonVPN"
+    "LIGHTNING6"
+	"EXPRESSVPN_420",
+    
+]
+
 def remove_duplicates(input_list):
     unique_list = []
     for item in input_list:
@@ -274,7 +286,7 @@ def remove_duplicates(input_list):
 
 html_pages = []
 
-for url in webpage_addresses:
+for url in new_webaddresses:
     response = requests.get(url)
     html_pages.append(response.text)
 
