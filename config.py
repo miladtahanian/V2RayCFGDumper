@@ -265,15 +265,16 @@ webpage_addresses = [
 ]
 
 new_webaddresses = [
-    "https://t.me/s/BinexTiFy",
-    "https://t.me/s/VPN_ROOM",
-    "https://t.me/s/VPNTV20",
-    "https://t.me/s/MTMVPN",
-    "https://t.me/s/MARAMBASHI",
-	"https://t.me/s/zedmodeonVPN",
-    "https://t.me/s/LIGHTNING6",
-	"https://t.me/s/EXPRESSVPN_420",
-    
+       "https://t.me/s/vpnaloo",
+       "https://t.me/s/godot404",
+       "https://t.me/s/dailyv2ry",
+       "https://t.me/s/prrofile_purple",
+       "https://t.me/s/vpnsaint",
+       "https://t.me/s/azadnet",
+       "https://t.me/s/sinavm",
+       "https://t.me/s/appsooner",
+       "https://t.me/s/V2SayFreeArchive",
+       "https://t.me/s/shadoowvpnn"
 ]
 
 def remove_duplicates(input_list):
@@ -286,7 +287,7 @@ def remove_duplicates(input_list):
 
 html_pages = []
 
-for url in webpage_addresses:
+for url in new_webaddresses:
     response = requests.get(url)
     html_pages.append(response.text)
 
