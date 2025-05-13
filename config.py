@@ -275,6 +275,7 @@ new_webaddresses = [
        "https://t.me/s/appsooner",
        "https://t.me/s/V2SayFreeArchive",
        "https://t.me/s/shadoowvpnn"
+       "https://t.me/s/v2fre"
 ]
 
 def remove_duplicates(input_list):
