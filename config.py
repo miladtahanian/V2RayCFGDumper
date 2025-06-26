@@ -278,6 +278,20 @@ new_webaddresses = [
        "https://t.me/s/v2fre"
 ]
 
+newaddresses = [
+       "https://t.me/s/ConfigsHubPlus",
+       "https://t.me/s/imtproxy_ir",
+       "https://t.me/s/PASARGAD_V2rayNG",
+       "https://t.me/s/SRCVPN",
+       "https://t.me/s/Outline_ir",
+       "https://t.me/s/SvnTeam",
+       "https://t.me/s/club_profsor",
+       "https://t.me/s/Speeds_vpn1",
+       "https://t.me/s/Airdorap_Free",
+       "https://t.me/s/VPN_SOLVE"
+       "https://t.me/s/bglvps"
+]
+
 def remove_duplicates(input_list):
     unique_list = []
     for item in input_list:
@@ -288,7 +302,7 @@ def remove_duplicates(input_list):
 
 html_pages = []
 
-for url in webpage_addresses:
+for url in newaddresses:
     response = requests.get(url)
     html_pages.append(response.text)
 
@@ -356,7 +370,7 @@ i = 0
 with open("config.txt", "w", encoding="utf-8") as file:
     for code in new_processed_codes:
         if i == 0:
-            config_string = "#🌐 به روزرسانی شده در" + final_string + " | هر 6 ساعت کانفیگ جدید داریم"
+            config_string = "#🌐 به روزرسانی شده در" + final_string + " | هر 15 دقیقه کانفیگ جدید داریم"
         else:
             config_string = "#🌐سرور " + str(i) + " | " + str(final_others_string) + "| MTSRVRS"
         config_final = code + config_string
