@@ -302,7 +302,7 @@ def remove_duplicates(input_list):
 
 html_pages = []
 
-for url in webpage_addresses:
+for url in old_webpage_addresses and newaddresses and new_webaddresses:
     response = requests.get(url)
     html_pages.append(response.text)
 
