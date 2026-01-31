@@ -19,7 +19,8 @@ addresses = [
        "https://t.me/s/XpnTeam",
        "https://t.me/s/nexvpn_server",
        "https://t.me/s/AzarAndoozVPN",
-       "https://manager.farsonline24.ir"
+       "https://manager.farsonline24.ir",
+       "https://info.farsonline24.ir/"
 ]
 
 def remove_duplicates(input_list):
