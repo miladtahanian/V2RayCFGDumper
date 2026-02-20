@@ -299,6 +299,11 @@ addresses = [
     "https://t.me/s/bglvps",
 ]
 
+new_addresses = [
+    "https://t.me/s/Sura_Config",
+    "https://t.me/s/Config_magazine"
+]
+
 
 
 def remove_duplicates(input_list):
@@ -311,7 +316,7 @@ def remove_duplicates(input_list):
 
 html_pages = []
 
-for url in addresses:
+for url in new_addresses:
     response = requests.get(url)
     html_pages.append(response.text)
 
