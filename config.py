@@ -316,7 +316,7 @@ def remove_duplicates(input_list):
 
 html_pages = []
 
-for url in new_addresses:
+for url in addresses:
     response = requests.get(url)
     html_pages.append(response.text)
 
