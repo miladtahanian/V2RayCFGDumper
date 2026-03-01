@@ -1,58 +1,100 @@
 import requests
-import jdatetime
+from bs4 import BeautifulSoup
+from datetime import datetime, timezone
 import pytz
-import base64
-import urllib.parse
+import jdatetime
 
-new_addresses = [
-    "https://raw.githubusercontent.com/iboxz/free-v2ray-collector/main/main/mix.txt"
+addresses = [
+    "http://t.me/s/filembad",
+    "http://t.me/s/blackRay",
+    "http://t.me/s/Config_magazine",
+    "https://t.me/s/WedBazGap"
 ]
 
+
+
+
 def remove_duplicates(input_list):
-    return list(dict.fromkeys(input_list))
+    unique_list = []
+    for item in input_list:
+        if item not in unique_list:
+            unique_list.append(item)
+    return unique_list
+
+
+html_pages = []
+
+for url in addresses:
+    response = requests.get(url)
+    html_pages.append(response.text)
 
 codes = []
 
-for url in new_addresses:
-    try:
-        response = requests.get(url, timeout=15)
-        lines = response.text.splitlines()
+for page in html_pages:
+    soup = BeautifulSoup(page, 'html.parser')
+    code_tags = soup.find_all('code')
 
-        for line in lines:
-            line = line.strip()
-            if line.startswith(("vmess://", "vless://", "ss://", "trojan://")):
-                codes.append(line)
-    except:
-        pass
+    for code_tag in code_tags:
+        code_content = code_tag.text.strip()
+        if "vless://" in code_content or "ss://" in code_content or "vmess://" in code_content or "trojan://" in code_content:
+            codes.append(code_content)
 
-codes = remove_duplicates(codes)
-
-current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
-current_month = current_date_time.strftime("%b")
-current_day = current_date_time.strftime("%d")
-updated_hour = current_date_time.strftime("%H")
-updated_minute = current_date_time.strftime("%M")
-
-update_string = f"{current_month}-{current_day} {updated_hour}:{updated_minute}"
+codes = list(set(codes))  # Remove duplicates
 
 processed_codes = []
 
-for i, code in enumerate(codes, start=1):
+# Get the current date and time
+current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
+# Print the current month in letters
+current_month = current_date_time.strftime("%b")
 
-    server_name = f"MTSRVRS-{i} | {update_string}"
-    encoded_name = urllib.parse.quote(server_name)
+# Get the current day as a string
+current_day = current_date_time.strftime("%d")
 
-    if code.startswith(("vless://", "trojan://", "ss://")):
-        if "#" in code:
-            code = code.split("#")[0]
-        code = code + "#" + encoded_name
+# Increase the current hour by 4 hours
+#new_date_time = current_date_time + timedelta(hours=4)
 
-    processed_codes.append(code)
+# Get the updated hour as a string
+updated_hour = current_date_time.strftime("%H")
 
-subscription_text = "\n".join(processed_codes)
-subscription_base64 = base64.b64encode(subscription_text.encode("utf-8")).decode("utf-8")
+updated_minute = current_date_time.strftime("%M")
 
-with open("sub.txt", "w", encoding="utf-8") as file:
-    file.write(subscription_base64)
+# Combine the strings to form the final result
+final_string = f"{current_month}-{current_day} | {updated_hour}:{updated_minute}"
+final_others_string = f"{current_month}-{current_day}"
+config_string = "#✅ " + str(final_string) + "-"
 
-print("Subscription file created successfully: sub.txt")
+for code in codes:
+    vmess_parts = code.split("vmess://")
+    vless_parts = code.split("vless://")
+
+    for part in vmess_parts + vless_parts:
+        if "ss://" in part or "vmess://" in part or "vless://" in part or "trojan://" in part:
+            service_name = part.split("serviceName=")[-1].split("&")[0]
+            processed_part = part.split("#")[0]
+            processed_codes.append(processed_part)
+
+processed_codes = remove_duplicates(processed_codes)
+
+new_processed_codes = []
+
+for code in processed_codes:
+    vmess_parts = code.split("vmess://")
+    vless_parts = code.split("vless://")
+
+    for part in vmess_parts + vless_parts:
+        if "ss://" in part or "vmess://" in part or "vless://" in part or "trojan://" in part:
+            service_name = part.split("serviceName=")[-1].split("&")[0]
+            processed_part = part.split("#")[0]
+            new_processed_codes.append(processed_part)
+
+i = 0
+with open("config.txt", "w", encoding="utf-8") as file:
+    for code in new_processed_codes:
+        if i == 0:
+            config_string = "#🌐 به روزرسانی شده در" + final_string + " | هر 15 دقیقه کانفیگ جدید داریم"
+        else:
+            config_string = "#🌐سرور " + str(i) + " | " + str(final_others_string) + "| MTSRVRS"
+        config_final = code + config_string
+        file.write(config_final + "\n")
+        i += 1
