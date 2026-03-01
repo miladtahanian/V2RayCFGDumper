@@ -89,7 +89,7 @@ for code in processed_codes:
             new_processed_codes.append(processed_part)
 
 i = 0
-with open("config.txt", "w", encoding="utf-8") as file:
+with open("sub.txt", "w", encoding="utf-8") as file:
     for code in new_processed_codes:
         if i == 0:
             config_string = "#🌐 به روزرسانی شده در" + final_string + " | هر 15 دقیقه کانفیگ جدید داریم"
