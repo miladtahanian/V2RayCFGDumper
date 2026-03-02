@@ -5,17 +5,17 @@ import pytz
 import jdatetime
 
 addresses = [
-    "https://t.me/filembad",
-    "https://t.me/blackRay",
-    "https://t.me/Config_magazine",
-    "https://t.me/WedBazGap",
-    "https://t.me/VPNnobody",
-    "https://t.me/Ciurou",
-    "https://t.me/NetMeli9",
-    "https://t.me/ProxyMtpVPN",
-    "https://t.me/NormanV2ray",
-    "https://t.me/canfingV2rayNG",
-    "https://t.me/LoopLine_Ir"   
+    "https://t.me/s/filembad",
+    "https://t.me/s/blackRay",
+    "https://t.me/s/Config_magazine",
+    "https://t.me/s/WedBazGap",
+    "https://t.me/s/VPNnobody",
+    "https://t.me/s/Ciurou",
+    "https://t.me/s/NetMeli9",
+    "https://t.me/s/ProxyMtpVPN",
+    "https://t.me/s/NormanV2ray",
+    "https://t.me/s/canfingV2rayNG",
+    "https://t.me/s/LoopLine_Ir"   
 ]
 
 
