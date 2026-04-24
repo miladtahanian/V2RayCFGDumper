@@ -1,11 +1,22 @@
 import requests
 from bs4 import BeautifulSoup
-from datetime import timedelta
+from datetime import datetime, timezone
 import pytz
 import jdatetime
-import logging
 
-logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
+addresses = [
+    "https://t.me/filembad",
+    "https://t.me/blackRay",
+    "https://t.me/Config_magazine",
+    "https://t.me/WedBazGap",
+    "https://t.me/VPNnobody",
+    "https://t.me/Ciurou",
+    "https://t.me/NetMeli9",
+    "https://t.me/ProxyMtpVPN",
+    "https://t.me/NormanV2ray",
+    "https://t.me/canfingV2rayNG",
+    "https://t.me/LoopLine_Ir"   
+]
 
 def remove_duplicates(input_list):
     unique_list = []
@@ -14,59 +25,11 @@ def remove_duplicates(input_list):
             unique_list.append(item)
     return unique_list
 
-def is_valid_code(code):
-    return any(code.startswith(prefix) for prefix in ["vmess://", "vless://", "ss://", "trojan://"])
-
-def test_http_connection(code):
-    try:
-        if code.startswith("ss://"):
-            return True 
-        elif code.startswith("vmess://") or code.startswith("vless://") or code.startswith("trojan://"):
-            import base64
-            try:
-                data = base64.b64decode(code.split("://")[1]).decode('utf-8')
-                import json
-                info = json.loads(data)
-                server = info.get("add")
-                if not server:
-                    return False
-                url = f"http://google.com/"
-                resp = requests.get(url, timeout=5)
-                return resp.status_code == 200
-            except Exception as e:
-                logging.warning(f"Failed to parse or connect for code: {e}")
-                return False
-        else:
-            return False
-    except Exception as e:
-        logging.warning(f"Connection test failed: {e}")
-        return False
-
-def read_addresses_from_file(filename):
-    try:
-        with open(filename, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-            addresses = [line.strip() for line in lines if line.strip()]
-            return addresses
-    except Exception as e:
-        logging.error(f"Failed to read addresses file: {e}")
-        return []
-
-addresses = read_addresses_from_file("addresses.txt")
-
-addresses = list(dict.fromkeys([a.lower() for a in addresses]))
-
 html_pages = []
 
 for url in addresses:
-    try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        html_pages.append(response.text)
-        logging.info(f"Fetched {url} successfully.")
-    except requests.RequestException as e:
-        logging.warning(f"Failed to fetch {url}: {e}")
-        continue
+    response = requests.get(url)
+    html_pages.append(response.text)
 
 codes = []
 
@@ -76,57 +39,60 @@ for page in html_pages:
 
     for code_tag in code_tags:
         code_content = code_tag.text.strip()
-        if any(prefix in code_content for prefix in ["vless://", "ss://", "vmess://", "trojan://"]):
+        if "vless://" in code_content or "ss://" in code_content or "vmess://" in code_content or "trojan://" in code_content:
             codes.append(code_content)
 
-codes = remove_duplicates(codes)
-
-current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
-current_month = current_date_time.strftime("%b")
-current_day = current_date_time.strftime("%d")
-updated_hour = current_date_time.strftime("%H")
-updated_minute = current_date_time.strftime("%M")
-final_string = f"{current_month}-{current_day} | {updated_hour}:{updated_minute}"
-final_others_string = f"{current_month}-{current_day}"
+codes = list(set(codes))
 
 processed_codes = []
 
+
+current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
+
+current_month = current_date_time.strftime("%b")
+
+current_day = current_date_time.strftime("%d")
+
+
+updated_hour = current_date_time.strftime("%H")
+
+updated_minute = current_date_time.strftime("%M")
+
+final_string = f"{current_month}-{current_day} | {updated_hour}:{updated_minute}"
+final_others_string = f"{current_month}-{current_day}"
+config_string = "#✅ " + str(final_string) + "-"
+
 for code in codes:
-    parts = []
-    for prefix in ["vmess://", "vless://", "ss://", "trojan://"]:
-        if prefix in code:
-            parts += code.split(prefix)
-    parts = parts[1:] if parts else []
-    for part in parts:
-        full_code = ""
-        for prefix in ["vmess://", "vless://", "ss://", "trojan://"]:
-            if code.startswith(prefix):
-                full_code = prefix + part
-                break
-            elif prefix + part in code:
-                full_code = prefix + part
-                break
-        if not full_code:
-            full_code = part
-        full_code = full_code.split("#")[0].strip()
-        if is_valid_code(full_code):
-            processed_codes.append(full_code)
+    vmess_parts = code.split("vmess://")
+    vless_parts = code.split("vless://")
+
+    for part in vmess_parts + vless_parts:
+        if "ss://" in part or "vmess://" in part or "vless://" in part or "trojan://" in part:
+            service_name = part.split("serviceName=")[-1].split("&")[0]
+            processed_part = part.split("#")[0]
+            processed_codes.append(processed_part)
 
 processed_codes = remove_duplicates(processed_codes)
 
-valid_codes = []
+new_processed_codes = []
+
 for code in processed_codes:
-    if test_http_connection(code):
-        valid_codes.append(code)
-    else:
-        logging.info(f"Invalid or unreachable config skipped: {code[:30]}...")
+    vmess_parts = code.split("vmess://")
+    vless_parts = code.split("vless://")
 
+    for part in vmess_parts + vless_parts:
+        if "ss://" in part or "vmess://" in part or "vless://" in part or "trojan://" in part:
+            service_name = part.split("serviceName=")[-1].split("&")[0]
+            processed_part = part.split("#")[0]
+            new_processed_codes.append(processed_part)
+
+i = 0
 with open("sub.txt", "w", encoding="utf-8") as file:
-    for i, code in enumerate(valid_codes):
+    for code in new_processed_codes:
         if i == 0:
-            header = f"#🌐 به روزرسانی شده در {final_string} | هر 15 دقیقه کانفیگ جدید داریم"
+            config_string = "#🌐 به روزرسانی شده در" + final_string + " | هر 15 دقیقه کانفیگ جدید داریم"
         else:
-            header = f"#🌐سرور {i} | {final_others_string} | MTSRVRS"
-        file.write(code + " " + header + "\n")
-
-logging.info(f"Total valid configs saved: {len(valid_codes)}")
+            config_string = "#🌐سرور " + str(i) + " | " + str(final_others_string) + "| MTSRVRS"
+        config_final = code + config_string
+        file.write(config_final + "\n")
+        i += 1
