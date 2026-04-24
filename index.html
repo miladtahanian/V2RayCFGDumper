@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>صفحه لندینگ کانفیگ‌ها</title>
+    <style>
+        body {
+            font-family: "Tahoma", sans-serif;
+            background: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin-bottom: 8px;
+            color: #0078d7;
+        }
+        .update-info {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        #codes-list {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+        pre {
+            background: #f0f0f0;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #888;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>کانفیگ‌های معتبر VPN</h1>
+        <div class="update-info" id="update-info">در حال بارگذاری...</div>
+    </header>
+
+    <section id="codes-list">
+        <!-- اینجا کدها بارگذاری می‌شوند -->
+    </section>
+
+    <footer>
+        ساخته شده توسط پروژه شما | به‌روزرسانی خودکار هر ۱۵ دقیقه
+    </footer>
+
+    <script>
+        async function loadConfigs() {
+            try {
+                const response = await fetch('sub.txt');
+                if (!response.ok) throw new Error('فایل کانفیگ‌ها پیدا نشد.');
+                const text = await response.text();
+                const lines = text.trim().split('\n');
+
+                const codesList = document.getElementById('codes-list');
+                codesList.innerHTML = '';
+
+                let updateInfoText = '';
+
+                lines.forEach(line => {
+                    // بخش کد و هدر را جدا می‌کنیم
+                    const parts = line.split('#');
+                    const codePart = parts[0].trim();
+                    const headerPart = parts[1] ? parts[1].trim() : '';
+
+                    // اگر خط حاوی کانفیگ بود
+                    if (codePart) {
+                        const pre = document.createElement('pre');
+                        pre.textContent = codePart + (headerPart ? `\n\n#${headerPart}` : '');
+                        codesList.appendChild(pre);
+
+                        // اگر header شامل تاریخ به‌روزرسانی بود، ذخیره کن
+                        if (headerPart.includes('به روزرسانی شده')) {
+                            updateInfoText = headerPart.replace('🌐', '').trim();
+                        }
+                    }
+                });
+
+                const updateInfo = document.getElementById('update-info');
+                updateInfo.textContent = updateInfoText || 'تاریخ به‌روزرسانی نامشخص است.';
+            } catch (error) {
+                document.getElementById('codes-list').textContent = 'خطا در بارگذاری کانفیگ‌ها: ' + error.message;
+                document.getElementById('update-info').textContent = '';
+            }
+        }
+
+        loadConfigs();
+    </script>
+</body>
+</html>
