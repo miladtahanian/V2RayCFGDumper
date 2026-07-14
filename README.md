@@ -14,7 +14,7 @@ or Scan QRCode Below:
 <!-- CONTACT -->
 ## Contact
 
-Milad Tahanian - [Telegram](https://t.me/miladtahanian) | [Instagram](https://instagram.com/tahanianmilad) | [MailMe](mailto:miladtahanianofficial@gmail.com)
+Milad Tahanian - [Telegram](https://telegram.me/miladtahanian) | [Instagram](https://instagram.com/tahanianmilad) | [MailMe](mailto:miladtahanianofficial@gmail.com)
 
 Project Link: [https://github.com/miladtahanian/V2RayCFGDumper/](https://github.com/miladtahanian/V2RayCFGDumper/)
 
