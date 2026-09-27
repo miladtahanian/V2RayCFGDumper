@@ -6,20 +6,14 @@ import jdatetime
 
 addresses = [
 "https://telegram.me/s/filembad",
-"https://telegram.me/s/blackRay",
-"https://telegram.me/s/Config_magazine",
-"https://telegram.me/s/WedBazGap",
-"https://telegram.me/s/VPNnobody",
-"https://telegram.me/s/Ciurou",
-"https://telegram.me/s/NetMeli9",
-"https://telegram.me/s/ProxyMtpVPN",
-"https://telegram.me/s/NormanV2ray",
 "https://telegram.me/s/canfingV2rayNG",
-"https://telegram.me/s/LoopLine_Ir"
+"https://telegram.me/s/Alpha_V2ray_Iran",
+"https://telegram.me/s/Farah_VPN",
+"https://telegram.me/s/vaddress",
+"https://telegram.me/s/v2ray_claim",
+"https://telegram.me/s/FreakConfig",
+"https://telegram.me/s/BigSmoke_Config"
 ]
-
-
-
 
 def remove_duplicates(input_list):
     unique_list = []
@@ -27,7 +21,6 @@ def remove_duplicates(input_list):
         if item not in unique_list:
             unique_list.append(item)
     return unique_list
-
 
 html_pages = []
 
@@ -50,23 +43,11 @@ codes = list(set(codes))  # Remove duplicates
 
 processed_codes = []
 
-# Get the current date and time
 current_date_time = jdatetime.datetime.now(pytz.timezone('Asia/Tehran'))
-# Print the current month in letters
 current_month = current_date_time.strftime("%b")
-
-# Get the current day as a string
 current_day = current_date_time.strftime("%d")
-
-# Increase the current hour by 4 hours
-#new_date_time = current_date_time + timedelta(hours=4)
-
-# Get the updated hour as a string
 updated_hour = current_date_time.strftime("%H")
-
 updated_minute = current_date_time.strftime("%M")
-
-# Combine the strings to form the final result
 final_string = f"{current_month}-{current_day} | {updated_hour}:{updated_minute}"
 final_others_string = f"{current_month}-{current_day}"
 config_string = "#✅ " + str(final_string) + "-"
@@ -99,7 +80,7 @@ i = 0
 with open("sub.txt", "w", encoding="utf-8") as file:
     for code in new_processed_codes:
         if i == 0:
-            config_string = "#🌐 به روزرسانی شده در" + final_string + " | هر 15 دقیقه کانفیگ جدید داریم"
+            config_string = "#🌐 به روزرسانی شده در" + final_string
         else:
             config_string = "#🌐سرور " + str(i) + " | " + str(final_others_string) + "| MTSRVRS"
         config_final = code + config_string

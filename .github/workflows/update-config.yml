@@ -2,7 +2,7 @@ name: Update V2Ray Config
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # هر 15 دقیقه
+    - cron: '0 */1 * * *' #every hour
   workflow_dispatch:
 
 jobs:
