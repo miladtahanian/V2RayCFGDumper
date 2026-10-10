@@ -4,21 +4,18 @@ from datetime import datetime, timezone
 import pytz
 import jdatetime
 
-# addresses = [
-# "https://telegram.me/s/filembad",
-# "https://telegram.me/s/canfingV2rayNG",
-# "https://telegram.me/s/Alpha_V2ray_Iran",
-# "https://telegram.me/s/Farah_VPN",
-# "https://telegram.me/s/vaddress",
-# "https://telegram.me/s/v2ray_claim",
-# "https://telegram.me/s/FreakConfig",
-# "https://telegram.me/s/BigSmoke_Config",
-# "https://raw.githubusercontent.com/patterniha/Free-Configs/main/configs.txt"
-# ]
-
 addresses = [
-    "https://raw.githubusercontent.com/patterniha/Free-Configs/main/configs.txt"
+"https://raw.githubusercontent.com/patterniha/Free-Configs/main/configs.txt",
+"https://telegram.me/s/filembad",
+"https://telegram.me/s/canfingV2rayNG",
+"https://telegram.me/s/Alpha_V2ray_Iran",
+"https://telegram.me/s/Farah_VPN",
+"https://telegram.me/s/vaddress",
+"https://telegram.me/s/v2ray_claim",
+"https://telegram.me/s/FreakConfig",
+"https://telegram.me/s/BigSmoke_Config",
 ]
+
 
 CONFIG_PROTOCOLS = ("vless://", "ss://", "vmess://", "trojan://")
 
