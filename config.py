@@ -4,16 +4,26 @@ from datetime import datetime, timezone
 import pytz
 import jdatetime
 
+# addresses = [
+# "https://telegram.me/s/filembad",
+# "https://telegram.me/s/canfingV2rayNG",
+# "https://telegram.me/s/Alpha_V2ray_Iran",
+# "https://telegram.me/s/Farah_VPN",
+# "https://telegram.me/s/vaddress",
+# "https://telegram.me/s/v2ray_claim",
+# "https://telegram.me/s/FreakConfig",
+# "https://telegram.me/s/BigSmoke_Config",
+# "https://raw.githubusercontent.com/patterniha/Free-Configs/main/configs.txt"
+# ]
+
 addresses = [
-"https://telegram.me/s/filembad",
-"https://telegram.me/s/canfingV2rayNG",
-"https://telegram.me/s/Alpha_V2ray_Iran",
-"https://telegram.me/s/Farah_VPN",
-"https://telegram.me/s/vaddress",
-"https://telegram.me/s/v2ray_claim",
-"https://telegram.me/s/FreakConfig",
-"https://telegram.me/s/BigSmoke_Config"
+    "https://raw.githubusercontent.com/patterniha/Free-Configs/main/configs.txt"
 ]
+
+CONFIG_PROTOCOLS = ("vless://", "ss://", "vmess://", "trojan://")
+
+def is_config(text):
+    return any(protocol in text for protocol in CONFIG_PROTOCOLS)
 
 def remove_duplicates(input_list):
     unique_list = []
@@ -22,22 +32,33 @@ def remove_duplicates(input_list):
             unique_list.append(item)
     return unique_list
 
-html_pages = []
-
-for url in addresses:
-    response = requests.get(url)
-    html_pages.append(response.text)
-
 codes = []
 
-for page in html_pages:
-    soup = BeautifulSoup(page, 'html.parser')
-    code_tags = soup.find_all('code')
+for url in addresses:
+    try:
+        response = requests.get(url, timeout=30)
+        response.raise_for_status()
+    except requests.RequestException as error:
+        print(f"Failed to fetch {url}: {error}")
+        continue
 
-    for code_tag in code_tags:
-        code_content = code_tag.text.strip()
-        if "vless://" in code_content or "ss://" in code_content or "vmess://" in code_content or "trojan://" in code_content:
-            codes.append(code_content)
+    page = response.text
+    content_type = response.headers.get("Content-Type", "").lower()
+    url_codes = []
+
+    if "text/html" in content_type or "<code" in page.lower():
+        soup = BeautifulSoup(page, "html.parser")
+        for code_tag in soup.find_all('code'):
+            code_content = code_tag.text.strip()
+            if is_config(code_content):
+                url_codes.append(code_content)
+
+    if not url_codes:
+        for token in page.split():
+            if is_config(token):
+                url_codes.append(token)
+
+    codes.extend(url_codes)
 
 codes = list(set(codes))  # Remove duplicates
 
